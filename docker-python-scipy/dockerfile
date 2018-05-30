@@ -1,0 +1,10 @@
+
+FROM python:3
+
+RUN mkdir ~/.pip/ && touch ~/.pip/pip.conf
+RUN echo "[global] \n index-url = https://mirrors.huaweicloud.com/repository/pypi/simple \n trusted-host = mirrors.huaweicloud.com \n timeout = 120"  >> ~/.pip/pip.conf 
+
+WORKDIR /usr/app
+RUN pip install --no-cache-dir numpy scipy matplotlib plotly pandas ipython sympy nose seaborn jupyter
+CMD [ "python"]
+
